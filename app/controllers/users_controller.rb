@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
 
-  # GET: /users
   get "/users" do
     erb :"/users/index.html"
   end
-
-  #CREATE
+  
   get "/users/create_account" do
     if logged_in?
        redirect "/users/#{current_user.id}"
@@ -13,7 +11,6 @@ class UsersController < ApplicationController
     erb :"/users/create_account.html"
   end
 
-  # POST: /users
   post "/users" do
     if !User.all.find_by(username: params[:username]) && !params.empty?
       user = User.create(params)
@@ -44,24 +41,8 @@ class UsersController < ApplicationController
     if !logged_in?
       redirect "/login"
     end
-    # flash[:success] = "Yeah! You are logged in!"
     @user = User.find(params[:id])
     erb :"/users/collection.html"   
-  end
-
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
-
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
-
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
   end
 
   get '/logout' do 
