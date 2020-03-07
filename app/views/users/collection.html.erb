@@ -3,13 +3,15 @@
 <ul>
   <li></li>
 </ul>
-
+<% @bottles.each do |bottle| %>
+Type: <a href="/bottles/<%= bottle.id %> "><%= bottle.wine_type %></a>
+<br><br>
+<% end %>
 <% if @user == current_user %>
 <a href="/">Home</a> |
 <a href="/logout">Logout</a>
 <br><br>
 <a href="/bottles/new">Add Bottle To Collection</a> |
-<a href="#">Edit Collection</a> |
 <a href="#">Delete From Collection</a>
 <br><br><br><br>
 <a href="#"><b>Delete Account</b></a>

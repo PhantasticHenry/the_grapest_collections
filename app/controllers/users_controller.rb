@@ -41,7 +41,8 @@ class UsersController < ApplicationController
     if !logged_in?
       redirect "/login"
     end
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
+    @bottles = @user.bottles.all
     erb :"/users/collection.html"   
   end
 

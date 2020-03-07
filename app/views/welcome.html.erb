@@ -17,9 +17,9 @@
         <% if !logged_in? %>
           <li><b><a href="/users/create_account">Create Account</a></b></li>
           <li><b><a href="/login">Log In</a></b></li>
-          <li><b><a href="#">Empty Links</a></b></li>
+          <li><b><a href="#">Empty</a></a></b></li>
         <% else %>
-           <li><b><a href="#">Empty</a></b></li>
+           <li><b><a href="/users/collection">My Collection</a></b></li>
            <li><b><a href="#">Empty</a></b></li>
            <li><b><a href="logout">Log Out</a></b></li>
         <% end %>

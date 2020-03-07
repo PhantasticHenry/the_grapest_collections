@@ -7,6 +7,9 @@ class BottlesController < ApplicationController
 
   # GET: /bottles/new
   get "/bottles/new" do
+    if !logged_in? 
+      redirect "/login"
+    end
     erb :"/bottles/new.html"
   end
 
@@ -29,11 +32,17 @@ class BottlesController < ApplicationController
 
   # GET: /bottles/5/edit
   get "/bottles/:id/edit" do
+    @bottle = Bottle.find(params[:id])
+    if !@bottle.user == current_user
+      redirect "/users/#{current_user.id}"
+    end
     erb :"/bottles/edit.html"
   end
 
   # PATCH: /bottles/5
   patch "/bottles/:id" do
+    @bottle = Bottle.find(params[:id])
+    binding.pry
     redirect "/bottles/:id"
   end
 
