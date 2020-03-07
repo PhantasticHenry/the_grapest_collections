@@ -5,19 +5,28 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
-  # GET: /users/new
+  #CREATE
   get "/users/create_account" do
+    if logged_in?
+       redirect "/users/#{current_user.id}"
+    end
     erb :"/users/create_account.html"
   end
 
   # POST: /users
   post "/users" do
-    redirect "/users"
+    if !User.all.find_by(username: params[:username]) && !params.emtpy?
+      user = User.create(params)
+      session[:user_id] = user.id
+      redirect "/users/#{user.id}"
+    else
+      redirect "/users/create_account"
+    end
   end
 
-  # GET: /users/5
+  #READ
   get "/users/:id" do
-    erb :"/users/show.html"
+    erb :"/users/collection.html"
   end
 
   # GET: /users/5/edit
