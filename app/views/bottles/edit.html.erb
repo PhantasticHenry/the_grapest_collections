@@ -1,6 +1,7 @@
 <h1>Edit Collection</h1>
 
 <form method="POST" action="/bottles/<%= @bottle.id %>">
+<%binding.pry%>
   <input type="hidden" id="hidden" name="_method" value="PATCH">
   <br>
   Wine Type:<input type="text" name="bottle[wine_type]" value="<%= @bottle.wine_type%>">
@@ -9,5 +10,5 @@
   <br>
   Price: <input type="text" name="bottle[price]" value="<%= @bottle.price%>">
   <br>
-  <input type="text" value="Edit">
+  <input type="submit" value="Edit">
 </form>

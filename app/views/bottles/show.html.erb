@@ -11,8 +11,10 @@ Price: <%= @bottle.price %>
 <br><br>
 <a href="/bottles/new">Add Bottle To Collection</a> |
 <a href="/bottles/<%= @bottle.id %>/edit">Edit Bottle</a> |
-<a href="#">Delete From Collection</a>
 <br><br><br><br>
-<a href="#"><b>Delete Account</b></a>
+<form method="POST" action="/bottles/<%= @bottle.id %>">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Bottle">
+</form>
 <% end %>
 

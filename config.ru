@@ -7,3 +7,4 @@ end
 run ApplicationController
 use BottlesController
 use UsersController
+use Rack::MethodOverride
