@@ -7,7 +7,7 @@
     <% if !logged_in? %>
       <p>Not logged in?  Please log in or create an account.</p>
     <% else %>
-      <p>Hello, You are logged in.</p>
+      <p>Hello, <%=current_user.username %> thank you for logging in.</p>
     <% end %>
     </div>
 
@@ -16,7 +16,7 @@
       <ul>
         <% if !logged_in? %>
           <li><b><a href="/users/create_account">Create Account</a></b></li>
-          <li><b><a href="#">Log In</a></b></li>
+          <li><b><a href="/login">Log In</a></b></li>
           <li><b><a href="#">Empty Links</a></b></li>
         <% else %>
            <li><b><a href="#">Empty</a></b></li>
