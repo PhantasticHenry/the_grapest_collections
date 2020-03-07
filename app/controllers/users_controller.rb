@@ -44,6 +44,7 @@ class UsersController < ApplicationController
     if !logged_in?
       redirect "/login"
     end
+    # flash[:success] = "Yeah! You are logged in!"
     @user = User.find(params[:id])
     erb :"/users/collection.html"   
   end
