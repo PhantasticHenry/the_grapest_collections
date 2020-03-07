@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
+  get "/users/create_account" do
+    erb :"/users/create_account.html"
   end
 
   # POST: /users
