@@ -24,6 +24,10 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/login' do 
+
+  end
+
   #READ
   get "/users/:id" do
     erb :"/users/collection.html"
@@ -42,5 +46,12 @@ class UsersController < ApplicationController
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     redirect "/users"
+  end
+
+  get '/logout' do 
+    if logged_in? && (session[:user_id] > 0)
+      session.clear 
+      redirect "/"
+    end
   end
 end
