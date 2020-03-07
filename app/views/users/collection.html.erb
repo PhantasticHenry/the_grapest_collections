@@ -1,1 +1,15 @@
 <h1>Currently in user's show view.</h1>
+<p><%= @user.username %>'s collection count <%= current_user.bottles.count %></p>
+<ul>
+  <li></li>
+</ul>
+
+<% if @user == current_user %>
+<a href="/">Home</a> |
+<a href="/bottles/new">Add Bottle To Collection</a> |
+<a href="#">Edit Collection</a> |
+<a href="#">Delete From Collection</a> |
+<a href="/logout">Logout</a>
+<br><br><br><br>
+<a href="#"><b>Delete Account</b></a>
+<% end %>

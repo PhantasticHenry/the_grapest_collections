@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    if !User.all.find_by(username: params[:username]) && !params.emtpy?
+    if !User.all.find_by(username: params[:username]) && !params.empty?
       user = User.create(params)
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
@@ -41,7 +41,11 @@ class UsersController < ApplicationController
 
   #READ
   get "/users/:id" do
-    erb :"/users/collection.html"
+    if !logged_in?
+      redirect "/login"
+    end
+    @user = User.find(params[:id])
+    erb :"/users/collection.html"   
   end
 
   # GET: /users/5/edit
