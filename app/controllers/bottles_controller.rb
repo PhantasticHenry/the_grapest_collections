@@ -42,8 +42,12 @@ class BottlesController < ApplicationController
   # PATCH: /bottles/5
   patch "/bottles/:id" do
     @bottle = Bottle.find(params[:id])
-    binding.pry
-    redirect "/bottles/:id"
+    if @bottle.user == current_user 
+      @bottle.update(params[:bottle])
+      redirect "/bottles/#{@bottle.id}"
+    else 
+      redirect "/users/#{current_user.id}"
+    end
   end
 
   # DELETE: /bottles/5/delete
