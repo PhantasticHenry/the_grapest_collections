@@ -52,4 +52,13 @@ class UsersController < ApplicationController
       redirect "/"
     end
   end
+
+  delete "/user/:id/delete" do
+    binding.pry
+    @user == current_user
+      @user = User.find(params[:id])
+      @user.destroy
+      sessions.clear
+      redirect "/"
+  end
 end
