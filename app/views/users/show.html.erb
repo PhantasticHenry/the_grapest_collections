@@ -1,0 +1,15 @@
+<br>
+<h1><center><%= @user.username %>'s Collection<br>Count<%= @user.bottles.count %></center></h1>
+
+<%= @user.bottles.first %>
+<%= @user.bottles.last %>
+
+<form action="/users/<%=@user.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <button type ="submit" onclick="myFunction()">DELETE ACCOUNT</button>
+<script>
+function myFunction() {
+  alert("Account being deleted!!!");
+}
+</script>
+</form>

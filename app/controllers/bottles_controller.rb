@@ -18,7 +18,7 @@ class BottlesController < ApplicationController
     if params.empty?
       redirect "/bottles/new"
     end
-    bottle = Bottle.new(wine_type: params[:wine_type], vintage: params[:vintage], price: params[:price])
+    bottle = Bottle.new(name: params[:name], grape: params[:grape], style: params[:style], vintage: params[:vintage], price: params[:price])
     bottle.user_id = current_user.id
     bottle.save
     redirect "/bottles/#{bottle.id}"

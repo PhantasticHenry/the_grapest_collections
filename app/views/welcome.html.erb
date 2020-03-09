@@ -1,5 +1,9 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
-
+  <% if !logged_in? %>
+  <h1>You are not logged in.  Please login or signup.</h1>
+  <% else %>
+  <h1>You are logged in.  Please use the menu for more options.</h1>
+  <% end %>
   </div>
 </div> 
