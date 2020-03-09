@@ -32,18 +32,8 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.id}"
+      redirect "/users/:id"
     end
-  end
-
-  #READ
-  get "/users/:id" do
-    if !logged_in?
-      redirect "/login"
-    end
-    @user = User.find(current_user.id)
-    @bottles = @user.bottles.all
-    erb :"/users/collection.html"   
   end
 
   get '/logout' do 
@@ -52,8 +42,14 @@ class UsersController < ApplicationController
       redirect "/"
     end
   end
+  #READ
+  get "/users/:id" do
+    @user = User.find(current_user.id)
+    @bottles = @user.bottles.all
+    erb :"/users/collection.html"   
+  end
 
-  delete "/user/:id/delete" do
+  delete "/user/:id" do
     binding.pry
     @user == current_user
       @user = User.find(params[:id])

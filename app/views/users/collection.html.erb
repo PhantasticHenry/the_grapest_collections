@@ -1,5 +1,5 @@
 <h1>Currently in user's show view.</h1>
-<p><%= @user.username %>'s collection count <%= current_user.bottles.count %></p>
+<p><%= @user.username %>'s collection count <%= @user.bottles.count %></p>
 <ul>
   <li></li>
 </ul>
@@ -13,7 +13,7 @@ Type: <a href="/bottles/<%= bottle.id %> "><%= bottle.wine_type %></a>
 <br><br>
 <a href="/bottles/new">Add Bottle To Collection</a> |
 <br><br><br><br>
-<form method="POST" action="/users/<%=@user.id%>/delete">
+<form action="/users/<%=@user.id%>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <button type ="submit" onclick="myFunction()">DELETE ACCOUNT</button>
 <script>

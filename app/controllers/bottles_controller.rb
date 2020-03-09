@@ -52,7 +52,7 @@ class BottlesController < ApplicationController
   # DELETE: /bottles/5/delete
   delete "/bottles/:id/delete" do
     @bottle = Bottle.find(params[:id])
-    if @bottle.user == current_user 
+    if @bottle.user == current_user
       @bottle.destroy
       redirect "/users/#{current_user.id}"
     else
