@@ -36,11 +36,13 @@
     <div class="dropdown">
       <button class="dropbtn"><%= current_user.username %>'s, Collection Menu</button>
       <div class="dropdown-content">
-        <a href="/users/collection"></a>All My Bottles</a>
+
+        <a href="/">Home</a>
+        <a href="/users/collection">All My Bottles</a>
         <a href="/bottles/new">Add Bottle To Collection</a>
+        <a href="/logout">Logout</a>
       </div> 
     </div>
-    <a href="/logout">Logout</a>
     <% end %>
 
         <%= yield %>

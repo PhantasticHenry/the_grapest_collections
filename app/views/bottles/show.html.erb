@@ -1,24 +1,35 @@
-Name: <%= @bottle.name %>
+<br><br><br>
+&nbsp;Name: <%= @bottle.name %>
 <br>
-Grape: <%= @bottle.grape %>
+&nbsp;Grape: <%= @bottle.grape %>
 <br>
-Style: <%= @bottle.style %>
+&nbsp;Style: <%= @bottle.style %>
 <br>
-Vintage: <%= @bottle.vintage %>
+&nbsp;Vintage: <%= @bottle.vintage %>
 <br>
-Price: <%= @bottle.price %>
-<br><br>
-<a href="/">Home</a> |
-<a href="/logout">Logout</a> |
+&nbsp;Price: <%= @bottle.price %>
+<div class="form">
 <% if @bottle.user == current_user %>
-<a href="/users/collection">My collection</a> |
-<br><br>
-<a href="/bottles/new">Add Bottle To Collection</a> |
-<a href="/bottles/<%= @bottle.id %>/edit">Edit Bottle</a> |
-<br><br><br><br>
 <form action="/bottles/<%= @bottle.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Bottle">
 </form>
+
+<form method="POST" action="/bottles/<%= @bottle.id %>">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+  <br>
+  Name:<input type="text" name="bottle[name]" value="<%= @bottle.name %>">
+  <br>
+  Grape:<input type="text" name="bottle[grape]" value="<%= @bottle.grape %>">
+  <br>
+  Style:<input type="text" name="bottle[style]" value="<%= @bottle.style %>">
+  <br>
+  Vintage: <input type="text" name="bottle[vintage]" value="<%= @bottle.vintage %>">
+  <br>
+  Price: <input type="text" name="bottle[price]" value="<%= @bottle.price %>">
+  <br>
+  <input type="submit" value="Edit Bottle">
+</form>
 <% end %>
+</div>
 

@@ -2,9 +2,25 @@
 <form method="POST" action="/bottles">
   <input type="text" name="name" placeholder="Bottle Name">
   <br>
-  <input type="text" name="grape" placeholder="Grape">
+    <label for="grape">Grape:</label>
+
+    <select id="grape" name="grape">
+      <option value="Albariño">Albariño</option>
+      <option value="Aligoté">Aligoté</option>
+      <option value="Amarone">Amarone</option>
+      <option value="Arneis">Arneis</option>
+      <option value="Asti Spumante">Asti Spumante</option>
+      <option value="Auslese">Auslese</option>
+      <option value="Banylus">Banylus</option>
+      <option value=""></option>
+    </select>
   <br>
-  <input type="text" name="style" placeholder="Red or White">
+  <label for="style">Style:</label>
+
+  <select id="style" name="style">
+    <option value="Red">Red</option>
+    <option value="White">White</option>
+  </select>
   <br>
   <input type="text" name="vintage" placeholder="Vintage">
   <br>

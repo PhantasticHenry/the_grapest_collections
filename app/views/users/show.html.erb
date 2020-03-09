@@ -1,8 +1,10 @@
 <br>
 <h1><center><%= @user.username %>'s Collection<br>Count<%= @user.bottles.count %></center></h1>
 
-<%= @user.bottles.first %>
-<%= @user.bottles.last %>
+Oldest Bottle - <%= @user.bottles.first.name %>
+<br>
+Newest Bottle - <%= @user.bottles.last.name %>
+<br><br>
 
 <form action="/users/<%=@user.id%>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">

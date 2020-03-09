@@ -3,11 +3,11 @@
 <form method="POST" action="/bottles/<%= @bottle.id %>">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
   <br>
-  Name:<input type="text" name="bottle[wine_type]" value="<%= @bottle.name %>">
+  Name: <input type="text" name="bottle[wine_type]" value="<%= @bottle.name %>">
   <br>
-  Grape:<input type="text" name="bottle[grape]" value="<%= @bottle.grape %>">
+  Grape: <input type="text" name="bottle[grape]" value="<%= @bottle.grape %>">
   <br>
-  Style:<input type="text" name="bottle[style]" value="<%= @bottle.style %>">
+  Style: <input type="text" name="bottle[style]" value="<%= @bottle.style %>">
   <br>
   Vintage: <input type="text" name="bottle[vintage]" value="<%= @bottle.vintage %>">
   <br>

@@ -21,21 +21,14 @@ class UsersController < ApplicationController
     end
   end
 
-  # get '/login' do 
-  #   if logged_in?
-  #     redirect "/users/#{current_user.id}"
-  #   end
-  #   erb :"/users/login.html"
-  # end
-
   post '/login' do
-    if !logged_in?
-      redirect "/"
+    if @user = User.find_by(username: params[:username])
+      @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      redirect "/users/create_account"
     end
-    @user = User.find_by(username: params[:username])
-    @user && @user.authenticate(params[:password])
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
   end
 
   get '/users/collection' do 
