@@ -13,8 +13,35 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
+  
+  <header>The Grapest Collections</header>
+  
   <body>
-    <div class="wrapper">
+    <%# <div class="wrapper"> %>
+    <% if !logged_in? %>
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+      <a href="/users/new">Signup</a>
+      
+      <div class="login-container">
+        <form action="/login" method="POST">
+          <input type="text" placeholder="Username" name="username">&nbsp;
+          <input type="password" placeholder="Password" name="password">&nbsp;&nbsp;
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+    <% else @user == current_user %>
+    <div class="topnav">
+    <div class="dropdown">
+      <button class="dropbtn"><%= current_user.username %>'s, Collection Menu</button>
+      <div class="dropdown-content">
+        <a href="#"></a>All My Bottles</a>
+        <a href="/bottles/new">Add Bottle To Collection</a>
+      </div> 
+    </div>
+    <a href="/logout">Logout</a>
+    <% end %>
 
         <%= yield %>
 
