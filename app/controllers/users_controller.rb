@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     if !logged_in?
-      redirect "/"
+      redirect "/login"
     end
     @user = User.find(params[:id])
     erb :"/users/show.html"   

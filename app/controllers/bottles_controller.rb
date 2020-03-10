@@ -13,7 +13,8 @@ class BottlesController < ApplicationController
   end
 
   post "/bottles" do
-    if params.empty?
+    if params[:name].empty? || params[:grape].empty? || params[:style].empty? || params[:vintage].empty? || params[:price].empty?
+      flash[:error] = "Please fill in all fields."
       redirect "/bottles/new"
     end
     bottle = Bottle.new(name: params[:name], grape: params[:grape], style: params[:style], vintage: params[:vintage], price: params[:price])
