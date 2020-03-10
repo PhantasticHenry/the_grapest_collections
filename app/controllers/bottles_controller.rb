@@ -25,32 +25,21 @@ class BottlesController < ApplicationController
     redirect "/bottles/#{bottle.id}"
   end
 
-  # GET: /bottles/5
   get "/bottles/:id" do
     @bottle = Bottle.find(params[:id])
     erb :"/bottles/show.html"
   end
-
-  # GET: /bottles/5/edit
-  get "/bottles/:id/edit" do
-    @bottle = Bottle.find(params[:id])
-    if !@bottle.user == current_user
-      redirect "/users/#{current_user.id}"
-    end
-    erb :"/bottles/edit.html"
-  end
-
-  # PATCH: /bottles/5
+  
   patch "/bottles/:id" do
     @bottle = Bottle.find(params[:id])
     if !@bottle.user == current_user
       redirect "/users/#{current_user.id}"
+    else
+      @bottle.update(params[:bottle])
+      redirect "/bottles/#{@bottle.id}"
     end
-    @bottle.update(params[:bottle])
-    redirect "/bottles/#{@bottle.id}"
   end
 
-  # DELETE: /bottles/5/delete
   delete "/bottles/:id/delete" do
     @bottle = Bottle.find(params[:id])
     if @bottle.user == current_user

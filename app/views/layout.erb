@@ -17,12 +17,10 @@
   <header>The Grapest Collections</header>
   
   <body>
-    <%# <div class="wrapper"> %>
     <% if !logged_in? %>
     <div class="topnav">
       <a class="active" href="/">Home</a>
       <a href="/users/create_account">Signup</a>
-      
       <div class="login-container">
         <form action="/login" method="POST">
           <input type="text" placeholder="Username" name="username">&nbsp;
@@ -36,7 +34,6 @@
     <div class="dropdown">
       <button class="dropbtn"><%= current_user.username %>'s, Collection Menu</button>
       <div class="dropdown-content">
-
         <a href="/">Home</a>
         <a href="/users/collection">All My Bottles</a>
         <a href="/bottles/new">Add Bottle To Collection</a>

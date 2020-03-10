@@ -1,4 +1,4 @@
-<br><br><br>
+<div class="form">
 &nbsp;Name: <%= @bottle.name %>
 <br>
 &nbsp;Grape: <%= @bottle.grape %>
@@ -8,13 +8,11 @@
 &nbsp;Vintage: <%= @bottle.vintage %>
 <br>
 &nbsp;Price: <%= @bottle.price %>
-<div class="form">
 <% if @bottle.user == current_user %>
 <form action="/bottles/<%= @bottle.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Bottle">
 </form>
-
 <form method="POST" action="/bottles/<%= @bottle.id %>">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
   <br>
@@ -30,6 +28,9 @@
   <br>
   <input type="submit" value="Edit Bottle">
 </form>
+<% else %>
+<br>
+<strong>Only <%= User.find(@bottle.user_id).username%> has permission to edit this bottle.</strong>
 <% end %>
 </div>
 

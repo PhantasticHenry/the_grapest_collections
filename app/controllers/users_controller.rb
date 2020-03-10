@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       redirect "/"
     end
   end
-  #READ
+
   get "/users/:id" do
     @user = User.find(params[:id])
     erb :"/users/show.html"   

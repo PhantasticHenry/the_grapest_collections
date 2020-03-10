@@ -4,7 +4,6 @@ Oldest Bottle - <%= current_user.bottles.first.name %>
 <br>
 Newest Bottle - <%= @current_user.bottles.last.name %>
 <br><br>
-
-<% current_user.bottles.each.with_index(1) do |bottle, index| %>
-  <a href="/bottles/<%= bottle.id %>"><%= index %>.)<%= bottle.name %></a><br>
+<% current_user.bottles.each do |bottle| %>
+<a href="/bottles/<%= bottle.id %>"><%= bottle.name %></a>
 <% end %>
