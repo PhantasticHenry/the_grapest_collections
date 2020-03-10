@@ -1,20 +1,17 @@
 class BottlesController < ApplicationController
 
-  # GET: /bottles
   get "/bottles" do
-    @bottles = Bottles.all 
+    @bottles = Bottle.all 
     erb :"/bottles/index.html"
   end
 
-  # GET: /bottles/new
   get "/bottles/new" do
     if !logged_in? 
-      redirect "/login"
+      redirect "/"
     end
     erb :"/bottles/new.html"
   end
 
-  # POST: /bottles
   post "/bottles" do
     if params.empty?
       redirect "/bottles/new"
@@ -26,27 +23,33 @@ class BottlesController < ApplicationController
   end
 
   get "/bottles/:id" do
-    @bottle = Bottle.find(params[:id])
+    find_and_set
     erb :"/bottles/show.html"
   end
   
   patch "/bottles/:id" do
-    @bottle = Bottle.find(params[:id])
+    find_and_set
     if !@bottle.user == current_user
       redirect "/users/#{current_user.id}"
     else
       @bottle.update(params[:bottle])
-      redirect "/bottles/#{@bottle.id}"
+      redirect "/bottles/#{bottle.id}"
     end
   end
 
   delete "/bottles/:id/delete" do
-    @bottle = Bottle.find(params[:id])
+    find_and_set
     if @bottle.user == current_user
       @bottle.destroy
       redirect "/users/#{current_user.id}"
     else
-      redirect "/bottles/#{@bottle.id}"
+      redirect "/bottles/#{bottle.id}"
     end
   end
+
+  private
+
+    def find_and_set
+      @bottle = Bottle.find(params[:id])
+    end
 end
