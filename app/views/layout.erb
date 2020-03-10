@@ -13,8 +13,11 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-  
-  <header>The Grapest Collections</header>
+    <% if !flash[:error] %>
+    <header>The Grapest Collections</header>
+    <% else %>
+    <header><%= flash[:error] %></header>
+    <% end %>
   
   <body>
     <% if !logged_in? %>
@@ -29,7 +32,9 @@
         </form>
       </div>
     </div>
+
     <% else @user == current_user %>
+
     <div class="topnav">
     <div class="dropdown">
       <button class="dropbtn"><%= current_user.username %>'s, Collection Menu</button>

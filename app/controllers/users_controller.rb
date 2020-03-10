@@ -6,18 +6,23 @@ class UsersController < ApplicationController
   
   get "/users/create_account" do
     if logged_in?
+      flash[:error] = "You are already logged in. No need to create an account."
        redirect "/users/#{current_user.id}"
     end
     erb :"/users/create_account.html"
   end
 
   post "/users" do
-    if !User.all.find_by(username: params[:username]) && !params.empty?
+    if params[:password].empty? || params[:username].empty?
+      flash[:error] = "Please fill both username and password."
+      redirect "/users/create_account"
+    elsif User.find_by(username: params[:username]) 
+      flash[:error] = "Username already taken."
+      redirect "/users/create_account"
+    else
       user = User.create(params)
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
-    else
-      redirect "/users/create_account"
     end
   end
 
@@ -47,6 +52,9 @@ class UsersController < ApplicationController
   end
 
   get "/users/:id" do
+    if !logged_in?
+      redirect "/"
+    end
     @user = User.find(params[:id])
     erb :"/users/show.html"   
   end

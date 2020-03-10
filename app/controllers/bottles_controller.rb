@@ -33,7 +33,7 @@ class BottlesController < ApplicationController
       redirect "/users/#{current_user.id}"
     else
       @bottle.update(params[:bottle])
-      redirect "/bottles/#{bottle.id}"
+      redirect "/bottles/#{@bottle.id}"
     end
   end
 
