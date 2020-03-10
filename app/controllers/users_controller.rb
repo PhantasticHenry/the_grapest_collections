@@ -30,11 +30,12 @@ class UsersController < ApplicationController
       redirect "/users/create_account"
     end
   end
-
+  
   get '/users/collection' do 
     if !logged_in?
       redirect "/login"
     end
+    flash.now[:warning] = "Uhhhhhh"
     erb :"/users/collection.html"
   end
 
@@ -46,16 +47,16 @@ class UsersController < ApplicationController
   end
   #READ
   get "/users/:id" do
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     erb :"/users/show.html"   
   end
 
-  delete "/user/:id" do
-    binding.pry
+  delete "/users/:id" do
     @user == current_user
       @user = User.find(params[:id])
       @user.destroy
-      sessions.clear
+      session.clear
       redirect "/"
   end
+
 end

@@ -1,1 +1,5 @@
 <h1>This is the Model's index page.</h1>
+
+<% @bottles.each do |bottle| %>
+<a href="/bottles/<%= bottle.id %>"><%= bottle.name %></a>
+<% end %>
