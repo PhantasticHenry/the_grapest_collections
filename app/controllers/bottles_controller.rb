@@ -6,7 +6,8 @@ class BottlesController < ApplicationController
   end
 
   get "/bottles/new" do
-    if !logged_in? 
+    if !logged_in?
+      flash[:error] = "Please Login To Add Bottle"
       redirect "/"
     end
     erb :"/bottles/new.html"
@@ -25,9 +26,10 @@ class BottlesController < ApplicationController
 
   get "/bottles/:id" do
     find_and_set
-    if @bottle
+    if @bottle 
       erb :"/bottles/show.html"
     else
+      flash[:error] = "Bottle Does Not Exist"
       redirect "/"
     end
   end
@@ -63,6 +65,6 @@ class BottlesController < ApplicationController
   private
 
     def find_and_set
-      @bottle = Bottle.find(params[:id])
+      @bottle = Bottle.find_by(id: params[:id])
     end
 end
