@@ -18,9 +18,99 @@
   <br>
   Name:<input type="text" name="bottle[name]" value="<%= @bottle.name %>">
   <br>
-  Grape:<input type="text" name="bottle[grape]" value="<%= @bottle.grape %>">
+  <label for="grape">Grape:</label>
+    <select name="bottle[grape]">
+      <option value="Albariño">Albariño</option>
+      <option value="Aligoté">Aligoté</option>
+      <option value="Amarone">Amarone</option>
+      <option value="Arneis">Arneis</option>
+      <option value="Asti Spumante">Asti Spumante</option>
+      <option value="Auslese">Auslese</option>
+      <option value="Banylus">Banylus</option>
+      <option value="Barbaresco">Barbaresco</option>
+      <option value="Bardolino">Bardolino</option>
+      <option value="Barolo">Barolo</option>
+      <option value="Beaujolais">Beaujolais</option>
+      <option value="Blanc de Blancs">Blanc de Blancs</option>
+      <option value="Blanc de Noirs">Blanc de Noirs</option>
+      <option value="Blush">Blush</option>
+      <option value="Boal or Bual">Boal or Bual</option>
+      <option value="Brunello">Brunello</option>
+      <option value="Cabernet Franc">Cabernet Franc</option>
+      <option value="Cabernet Sauvignon">Cabernet Sauvignon</option>
+      <option value="Carignan">Carignan</option>
+      <option value="Carmenere">Carmenere</option>
+      <option value="Cava">Cava</option>
+      <option value="Charbono">Charbono</option>
+      <option value="Champagne">Champagne</option>
+      <option value="Chardonnay">Chardonnay</option>
+      <option value="Châteauneuf-du-Pape">Châteauneuf-du-Pape</option>
+      <option value="Chenin Blanc">Chenin Blanc</option>
+      <option value="Chianti">Chianti</option>
+      <option value="Chianti Classico">Chianti Classico</option>
+      <option value="Claret">Claret</option>
+      <option value="Colombard (French Colombard)">Colombard (French Colombard)</option>
+      <option value="Constantia">Constantia</option>
+      <option value="Cortese">Cortese</option>
+      <option value="Dolcetto">Dolcetto</option>
+      <option value="Eiswein">Eiswein</option>
+      <option value="Frascati">Frascati</option>
+      <option value="Fumé Blanc">Fumé Blanc</option>
+      <option value="Gamay">Gamay</option>
+      <option value="Gamay Beaujolais">Gamay Beaujolais</option>
+      <option value="Gattinara">Gattinara</option>
+      <option value="Gewürztraminer">Gewürztraminer</option>
+      <option value="Grappa">Grappa</option>
+      <option value="Grenache">Grenache</option>
+      <option value="Johannisberg Riesling">Johannisberg Riesling</option>
+      <option value="Kir">Kir</option>
+      <option value="Lambrusco">Lambrusco</option>
+      <option value="Liebfraumilch">Liebfraumilch</option>
+      <option value="Madeira">Madeira</option>
+      <option value="Malbec">Malbec</option>
+      <option value="Marc">Marc</option>
+      <option value="Marsala">Marsala</option>
+      <option value="Marsanne">Marsanne</option>
+      <option value="Mead">Mead</option>
+      <option value="Meritage">Meritage</option>
+      <option value="Merlot">Merlot</option>
+      <option value="Montepulciano">Montepulciano</option>
+      <option value="Moscato">Moscato</option>
+      <option value="Mourvedre">Mourvedre</option>
+      <option value="Müller-Thurgau">Müller-Thurgau</option>
+      <option value="Muscat">Muscat</option>
+      <option value="Nebbiolo">Nebbiolo</option>
+      <option value="Petit Verdot">Petit Verdot</option>
+      <option value="Petite Sirah">Petite Sirah</option>
+      <option value="Pinot Blanc">Pinot Blanc</option>
+      <option value="Pinot Grigio/Pinot Gris">Pinot Grigio/Pinot Gris</option>
+      <option value="Pinot Meunier">Pinot Meunier</option>
+      <option value="Pinot Noir">Pinot Noir</option>
+      <option value="Pinotage">Pinotage</option>
+      <option value="Port">Port</option>
+      <option value="Retsina">Retsina</option>
+      <option value="Rosé">Rosé</option>
+      <option value="Roussanne">Roussanne</option>
+      <option value="Sangiovese">Sangiovese</option>
+      <option value="Sauterns">Sauterns</option>
+      <option value="Sauvignon Blanc">Sauvignon Blanc</option>
+      <option value="Sémillon">Sémillon</option>
+      <option value="Sherry">Sherry</option>
+      <option value="Soave">Soave</option>
+      <option value="Tokay">Tokay</option>
+      <option value="Traminer">Traminer</option>
+      <option value="Trebbiano">Trebbiano</option>
+      <option value="Ugni Blanc">Ugni Blanc</option>
+      <option value="Valpolicella">Valpolicella</option>
+      <option value="Verdicchio">Verdicchio</option>
+      <option value="Viognier">Viognier</option>
+      <option value="Zinfandel">Zinfandel</option>
+    </select>
   <br>
-  Style:<input type="text" name="bottle[style]" value="<%= @bottle.style %>">
+    <select name="bottle[style]">
+    <option value="Red">Red</option>
+    <option value="White">White</option>
+  </select>
   <br>
   Vintage: <input type="text" name="bottle[vintage]" value="<%= @bottle.vintage %>">
   <br>
