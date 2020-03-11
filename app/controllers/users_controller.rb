@@ -38,9 +38,9 @@ class UsersController < ApplicationController
   
   get '/users/collection' do 
     if !logged_in?
+      flash[:error] = "Please Sign In To View Collection"
       redirect "/login"
     end
-    flash.now[:warning] = "Uhhhhhh"
     erb :"/users/collection.html"
   end
 
@@ -55,13 +55,13 @@ class UsersController < ApplicationController
     if !logged_in?
       redirect "/"
     end
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     erb :"/users/show.html"   
   end
 
   delete "/users/:id" do
     @user == current_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
       @user.destroy
       session.clear
       redirect "/"
