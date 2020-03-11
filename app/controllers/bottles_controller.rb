@@ -25,8 +25,20 @@ class BottlesController < ApplicationController
 
   get "/bottles/:id" do
     find_and_set
-    erb :"/bottles/show.html"
+    if @bottle
+      erb :"/bottles/show.html"
+    else
+      redirect "/"
+    end
   end
+
+  # get "/bottles/:id/edit" do 
+  #   if !logged_in? 
+  #     redirect "/"
+  #   end
+  #   find_and_set
+  #   erb :"/bottles/edit.html"
+  # end
   
   patch "/bottles/:id" do
     find_and_set

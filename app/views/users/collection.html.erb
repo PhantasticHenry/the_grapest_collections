@@ -1,5 +1,5 @@
+<% if !current_user.bottles.empty? %>
 <h1>Here's all your bottles</h1>
-
 Oldest Bottle - <%= current_user.bottles.first.name %>
 <br>
 Newest Bottle - <%= @current_user.bottles.last.name %>
@@ -7,3 +7,6 @@ Newest Bottle - <%= @current_user.bottles.last.name %>
 <% current_user.bottles.each do |bottle| %>
 <a href="/bottles/<%= bottle.id %>"><%= bottle.name %></a>
 <% end %>
+<% end %>
+
+<h1>You have currently have <%= current_user.bottles.count %> bottles.</h1>
