@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   
-  get "/users/create_account" do
+  get "/users/new" do
     if logged_in?
       flash[:error] = "You are already logged in. No need to create an account."
        redirect "/users/#{current_user.id}"
     end
-    erb :"/users/create_account.html"
+    erb :"/users/new.html"
   end
 
   post "/users" do
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       if @user.errors.any?
         @user.errors.full_messages.each do |message|
           flash[:error] = "#{message}"
-          redirect "/"
+          redirect "/users/new"
         end
       else
         session[:user_id] = @user.id
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
     else
-      redirect "/users/create_account"
+      redirect "/users/new"
     end
   end
   
