@@ -1,6 +1,5 @@
-<header>My Collection</header>
 <% if !current_user.bottles.empty? %>
-<h1>Here's all your bottles</h1>
+<h1>Your Collection</h1>
 Oldest Bottle - <%= current_user.bottles.first.name %>
 <br>
 Newest Bottle - <%= @current_user.bottles.last.name %>
