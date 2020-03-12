@@ -15,13 +15,14 @@ class BottlesController < ApplicationController
   end
 
   post "/bottles" do
-    if params[:name].empty? || params[:grape].empty? || params[:style].empty? || params[:vintage].empty? || params[:price].empty?
-      flash[:error] = "Please fill in all fields."
-      redirect "/bottles/new"
-    end
     @bottle = current_user.bottles.build(name: params[:name], grape: params[:grape], style: params[:style], vintage: params[:vintage], price: params[:price])
     if @bottle.save
       redirect "/bottles/#{@bottle.id}"
+    else
+      @bottle.errors.full_messages.each do |message|
+        flash[:error] = "#{message}"
+        redirect "/bottles/new"
+      end
     end
   end
 
