@@ -1,7 +1,8 @@
 class BottlesController < ApplicationController
 
   get "/bottles" do
-    @bottles = Bottle.all 
+    @bottles = Bottle.all
+    @sorted_bottles = @bottles.order(name: :asc).uniq
     erb :"/bottles/index.html"
   end
 
@@ -18,10 +19,10 @@ class BottlesController < ApplicationController
       flash[:error] = "Please fill in all fields."
       redirect "/bottles/new"
     end
-    bottle = Bottle.new(name: params[:name], grape: params[:grape], style: params[:style], vintage: params[:vintage], price: params[:price])
-    bottle.user_id = current_user.id
-    bottle.save
-    redirect "/bottles/#{bottle.id}"
+    @bottle = current_user.bottles.build(name: params[:name], grape: params[:grape], style: params[:style], vintage: params[:vintage], price: params[:price])
+    if @bottle.save
+      redirect "/bottles/#{@bottle.id}"
+    end
   end
 
   get "/bottles/:id" do
@@ -45,6 +46,7 @@ class BottlesController < ApplicationController
   patch "/bottles/:id" do
     find_and_set
     if !@bottle.user == current_user
+      flash[:error] = "You may not edit this bottle."
       redirect "/users/#{current_user.id}"
     else
       @bottle.update(params[:bottle])
