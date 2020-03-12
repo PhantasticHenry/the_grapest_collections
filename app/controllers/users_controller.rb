@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   get '/users/collection' do 
     if !logged_in?
       flash[:error] = "Please Sign In To View Collection"
-      redirect "/login"
+      redirect "/"
     end
     @sorted_bottles = current_user.bottles.order(name: :asc)
     erb :"/users/collection.html"
