@@ -1,10 +1,12 @@
-<header>Edit Account</header>
 <br>
 <% if @user == current_user %>
+<header>Edit Account</header>
 <h1><center><%= current_user.username %>'s Collection<br>Count <%= current_user.bottles.count %></center></h1>
 <form method="post" action="/users/<%= @user.id %>">
 <input type="hidden" id="hidden" name="_method" value="delete">
 <input type="submit" value="DELETE ACCOUNT">
 </form>
+<% else %>
+<header>Only <%= @user.username %> may edit this account</header>
 <% end %>
 
