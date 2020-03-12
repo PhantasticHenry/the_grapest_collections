@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-
-  get "/users" do
-    erb :"/users/index.html"
-  end
   
   get "/users/create_account" do
     if logged_in?
@@ -20,9 +16,11 @@ class UsersController < ApplicationController
       flash[:error] = "Username already taken."
       redirect "/users/create_account"
     else
-      user = User.create(params)
-      session[:user_id] = user.id
-      redirect "/users/#{user.id}"
+      @user = User.new(params)
+      if @user.save
+        session[:user_id] = @user.id
+        redirect "/users/#{@user.id}"
+      end
     end
   end
 
