@@ -9,19 +9,16 @@ class UsersController < ApplicationController
   end
 
   post "/users" do
-    if params[:password].empty? || params[:username].empty?
-      flash[:error] = "Please fill both username and password."
-      redirect "/users/create_account"
-    elsif User.find_by(username: params[:username]) 
-      flash[:error] = "Username already taken."
-      redirect "/users/create_account"
-    else
-      @user = User.new(params)
-      if @user.save
+      @user = User.create(params)
+      if @user.errors.any?
+        @user.errors.full_messages.each do |message|
+          flash[:error] = "#{message}"
+          redirect "/"
+        end
+      else
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
       end
-    end
   end
 
   post '/login' do
