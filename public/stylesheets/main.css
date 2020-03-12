@@ -28,15 +28,20 @@ h1 {
   font-size: 25px;
   text-shadow:5px 5px 10px black;
   text-align: center;
-  color: white; 
+  color: white;
 }
 
-a {
-  padding: 20px;
-  font-size: 15px;
-  text-shadow:5px 5px 10px black;
-  text-align: center;
-  color: white; 
+b {
+  font-size: 30px;
+  position: fixed;
+  top: 100px;
+  right: 500px;
+  text-shadow:5px 5px 10px darkred;
+  color: darkred;
+  animation-name: heading;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  background-color: transparent;
 }
 
 body {

@@ -1,9 +1,5 @@
-<nav>
-<h1>Bottle Index
-<br>
-<% @bottles.each do |bottle| %>
-<a href="/bottles/<%= bottle.id %>"><%= bottle.name %></a>
+<header>Bottle Index</header>
+<% @sorted_bottles.each do |bottle| %>
+<br><a href="/bottles/<%= bottle.id %>"><%= bottle.name %></a><br>
 <% end %>
-</h1>
-</nav>
 

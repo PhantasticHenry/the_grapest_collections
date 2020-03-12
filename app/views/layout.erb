@@ -13,10 +13,8 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-    <% if !flash[:error] %>
-    <header>The Grapest Collections</header>
-    <% else %>
-    <header><%= flash[:error] %></header>
+    <% if flash[:error] %>
+    <b><%= flash[:error] %></b>
     <% end %>
   
   <body>
@@ -41,7 +39,9 @@
       <div class="dropdown-content">
         <a href="/users/collection">My Collection</a>
         <a href="/bottles/new">Add Bottle To Collection</a>
+        <a href="/bottles">Bottle Index</a>
         <a href="/logout">Logout</a>
+        <a href="/users/<%= current_user.id %>">Delete Collection</a>
       </div> 
     </div>
     <% end %>

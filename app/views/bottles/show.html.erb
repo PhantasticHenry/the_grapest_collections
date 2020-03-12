@@ -9,6 +9,7 @@
 <br>
 &nbsp;Price: <%= @bottle.price %>
 <% if @bottle.user == current_user %>
+<header>Edit Or Delete Bottle</header>
 <form action="/bottles/<%= @bottle.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Bottle">
@@ -119,6 +120,7 @@
   <input type="submit" value="Edit Bottle">
 </form>
 <% else %>
+<header>The Grapest Collections</header>
 <br>
 <strong>Only <%= User.find(@bottle.user_id).username%> has permission to edit this bottle.</strong>
 <% end %>
