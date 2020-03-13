@@ -20,8 +20,8 @@
   <body>
     <% if !logged_in? %>
     <div class="topnav">
-      <a class="active" href="/">Home</a>
-      <a href="/users/new">Signup</a>
+      <a class="active" href="/users/new">Signup</a>
+      <a href="/bottles">Index</a>
       <div class="login-container">
         <form action="/login" method="POST">
           <input type="text" placeholder="Username" name="username">&nbsp;
