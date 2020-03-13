@@ -58,8 +58,8 @@ class UsersController < ApplicationController
   end
 
   delete "/users/:id" do
+    @user = User.find_by(id: params[:id])
     @user == current_user
-      @user = User.find_by(id: params[:id])
       @user.destroy
       session.clear
       redirect "/"
