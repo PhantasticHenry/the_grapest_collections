@@ -23,7 +23,7 @@
       <a class="active" href="/users/new">Signup</a>
       <a href="/bottles">Index</a>
       <div class="login-container">
-        <form action="/login" method="POST">
+        <form action="/users/login" method="POST">
           <input type="text" placeholder="Username" name="username">&nbsp;
           <input type="password" placeholder="Password" name="password">&nbsp;&nbsp;
           <button type="submit">Login</button>
@@ -40,7 +40,7 @@
         <a href="/users/collection">My Collection</a>
         <a href="/bottles/new">Add Bottle To Collection</a>
         <a href="/bottles">Bottle Index</a>
-        <a href="/logout">Logout</a>
+        <a href="/users/logout">Logout</a>
         <a href="/users/<%= current_user.id %>">Delete Collection</a>
       </div> 
     </div>

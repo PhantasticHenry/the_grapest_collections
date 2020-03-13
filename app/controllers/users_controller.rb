@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       end
   end
 
-  post '/login' do
+  post '/users/login' do
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     erb :"/users/collection.html"
   end
 
-  get '/logout' do 
+  get '/users/logout' do 
     if logged_in? && (session[:user_id] > 0)
       session.clear 
       redirect "/"
