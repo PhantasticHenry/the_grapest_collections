@@ -27,6 +27,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
     else
+      flash[:error] = "Login error!  Please create an account."
       redirect "/users/new"
     end
   end
