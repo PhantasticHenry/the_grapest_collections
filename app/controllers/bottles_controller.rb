@@ -9,7 +9,7 @@ class BottlesController < ApplicationController
   get "/bottles/new" do
     if !logged_in?
       flash[:error] = "Please Login To Add Bottle"
-      redirect "/"
+      redirect "/users/login"
     end
     erb :"/bottles/new.html"
   end
@@ -32,7 +32,7 @@ class BottlesController < ApplicationController
       erb :"/bottles/show.html"
     else
       flash[:error] = "Bottle Does Not Exist"
-      redirect "/"
+      redirect "/bottles"
     end
   end
 
