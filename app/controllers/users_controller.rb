@@ -21,6 +21,13 @@ class UsersController < ApplicationController
       end
   end
 
+  get "/users/login" do
+    if logged_in?
+      redirect "/users/#{current_user.id}"
+    end
+    erb :"/users/login.html"
+  end
+
   post '/users/login' do
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
@@ -35,7 +42,7 @@ class UsersController < ApplicationController
   get '/users/collection' do 
     if !logged_in?
       flash[:error] = "Please Sign In To View Collection"
-      redirect "/"
+      redirect "/users/login"
     end
     @sorted_bottles = current_user.bottles.order(name: :asc)
     erb :"/users/collection.html"
@@ -44,7 +51,7 @@ class UsersController < ApplicationController
   get '/users/logout' do 
     if logged_in? && (session[:user_id] > 0)
       session.clear 
-      redirect "/"
+      redirect "/users/login"
     end
   end
 
@@ -52,7 +59,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if !@user
       flash[:error] = "User does not exist"
-      redirect "/"
+      redirect "/users/login"
     end
     erb :"/users/show.html"   
   end
@@ -62,7 +69,7 @@ class UsersController < ApplicationController
     @user == current_user
       @user.destroy
       session.clear
-      redirect "/"
+      redirect "/users/login"
   end
 
 end
