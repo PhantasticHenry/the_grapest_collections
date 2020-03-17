@@ -13,8 +13,29 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
+  <style>
+  .animatedError {
+    flex: 1;
+  padding: 2px;
+  position: fixed;
+  left: 750px;
+  top: 100px;
+  font-size: 25px;
+  text-align: center;
+  text-shadow:5px 5px 10px black;
+  animation-name: heading;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  background-color: darkred;
+}
+@keyframes error {
+  from {color: white;}
+  to {color: darkred;}
+}
+  }
+  </style>
     <% if flash[:error] %>
-    <nav><%= flash[:error] %></nav>
+    <h5 class="animatedError"><%= flash[:error] %></h5 >
     <% end %>
   
   <body>
